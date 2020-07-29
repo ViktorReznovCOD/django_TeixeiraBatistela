@@ -37,3 +37,11 @@
 	email = 'ofc.felipearaujo@gmail.com'
 	senha = 'biacris1204'
 
+___________________________________________________________________________________________________________________________
+Problema:
+"django.db.utils.ProgrammingError: relation "auth_user" does not exist LINE 1: ...user"."is_active", "auth_user"."date_joined" FROM "auth_user..."
+Solução:
+1 - execute python manage.py makemigrations 
+2 - execute python manage.py migrate
+
+
