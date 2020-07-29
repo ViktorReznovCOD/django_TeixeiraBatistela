@@ -1,0 +1,12 @@
+body{
+    background: #dedede;
+}
+#myCarousel{
+    background: #343a40;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.carousel-item{
+    text-align: center;
+    min-height: 250px;
+}
