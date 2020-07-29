@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="">
+            <img src="{% static 'static\admin\img\semfundo.png' %}" alt="" style="width: 100px;height:100px;" >
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'novousuario' %}">Áreas de atuação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'novousuario' %}">Fale conosco</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'novousuario' %}">Endereço</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sobrenos' %}">Sobre nós</a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+</nav>
+
+<br><br><br>
