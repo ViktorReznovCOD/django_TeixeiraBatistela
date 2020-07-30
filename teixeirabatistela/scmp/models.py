@@ -117,6 +117,13 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+class Noticia(models.Model):
+    titulo = models.CharField(max_length=255)
+    texto = models.TextField()
+    data = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.titulo
 
 class Entrega(models.Model):
     id = models.IntegerField(primary_key=True)

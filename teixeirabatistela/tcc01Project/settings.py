@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'postgres', #usuario configurado (uses a non-postgres-root user on your database)
         'PASSWORD': 'jujuba123',
         'HOST': 'localhost',
-        'SCHEMA':'manga',
+        'SCHEMA':'public',
         'PORT': '5432'
     }
 }

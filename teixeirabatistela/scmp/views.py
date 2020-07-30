@@ -1,34 +1,30 @@
 from django.shortcuts import render, redirect
-from tcc01Project import urls
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate
 
-# Create your views here.
-def home(request):
+from .models import Noticia
 
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['senha']
-        if User.objects.filter(email=email).exists():
-            nome = User.objects.filter(email=email).values_list('username', flat=True).get()
-            user = auth.authenticate(request, username=nome, password=password)
-            if user is not None:
-                auth.login(request, user)
-                print('LOG: USUARIO LOGADO: ',user)
-                print('LOGIN REALIZADO COM SUCESSO')
-                return redirect ('dashboard')
-            
-        else:
-            print('user nao authenticate')
-            return redirect('home')
-    return render (request, 'home.html')
+# Create your views here.
+def view(resquest, noticia_id):
+    return HttpResponse("Essa é a notícia %s." % noticia_id)
+
+def index(request):
+    ultimas_noticias = Noticia.objects.order_by('data')[:5]
+    context = {'ultimas_noticias': ultimas_noticias}
+    return render(request, 'scmp/partials/index.html',context)
+
+def home(request):
+    return render (request, 'scmp/home.html')
+
 def logout(request):
     auth.logout(request)
     return redirect ('home')
+
 def dashboard(request):
     if request.user.is_authenticated:
-        return render (request,'dashboard.html')
+        return render (request,'scmp/dashboard.html')
     else:
         return redirect('home')
 
@@ -57,14 +53,14 @@ def novousuario(request):
         user = User.objects.create_user(username=Nome, password=Senha1, email=email)
         user.save()
         print('DADOS SALVOS')
-        return render(request, 'home.html')
+        return render(request, 'scmp/home.html')
         
     else:
-        return render(request,'novousuario.html')
+        return render(request,'scmp/novousuario.html')
 
 def equipamentos(request):
     #ADCIONAR REGRA DE USER.IS_AUTHENTICATED PARA HAVER A REGRA DE USUARIO ESTAR LOGADO PARA UTILIZAR ESSA PAGINA
-    return render(request, 'equipamentos.html')
+    return render(request, 'scmp/equipamentos.html')
 
 def sobrenos(request):
-    return render(request, 'sobrenos.html')
+    return render(request, 'scmp/sobrenos.html')

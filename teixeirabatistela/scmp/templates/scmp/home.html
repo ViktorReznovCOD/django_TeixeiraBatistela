@@ -22,7 +22,7 @@
 
   </head>
   <body>
-    {% include 'partials/navegacao.html' %}
+    {% include 'scmp/partials/navegacao.html' %}
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
         <ol class="carousel-indicators">
@@ -51,6 +51,11 @@
         </a>
     </div>
 
+    <div class=container>
+      {% load tags %}
+      {% noticias %}
+    </div>
+    
     <div class="row">
       <div class="col">
         <h2> What is Lorem Ipsum?</h2>
