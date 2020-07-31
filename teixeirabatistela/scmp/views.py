@@ -7,13 +7,15 @@ from django.contrib.auth import authenticate
 from .models import Noticia
 
 # Create your views here.
-def view(resquest, noticia_id):
-    return HttpResponse("Essa é a notícia %s." % noticia_id)
+def view(request, noticia_id):
+    noticia = Noticia.objects.extra(where=["id= %s" ], params=[noticia_id])
+    context = {'noticia': noticia}
+    return render(request, 'scmp/partials/noticia.html', context)
 
 def index(request):
     ultimas_noticias = Noticia.objects.order_by('data')[:5]
     context = {'ultimas_noticias': ultimas_noticias}
-    return render(request, 'scmp/partials/index.html',context)
+    return render(request, 'scmp/partials/noticias.html',context)
 
 def home(request):
     return render (request, 'scmp/home.html')

@@ -120,7 +120,7 @@ class DjangoSession(models.Model):
 class Noticia(models.Model):
     titulo = models.CharField(max_length=255)
     texto = models.TextField()
-    data = models.DateField(auto_now_add=True)
+    data = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.titulo
