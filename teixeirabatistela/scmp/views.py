@@ -64,5 +64,11 @@ def equipamentos(request):
     #ADCIONAR REGRA DE USER.IS_AUTHENTICATED PARA HAVER A REGRA DE USUARIO ESTAR LOGADO PARA UTILIZAR ESSA PAGINA
     return render(request, 'scmp/equipamentos.html')
 
+def endereço(request):
+    mapbox_access_token = 'pk.eyJ1IjoiZmVsaXBlLXJlem5vdjAiLCJhIjoiY2tkZGsyeTVkMjAxYTJxbHY0czJzdTVmZyJ9.lPpzzLUxcmMMEGO070Pwag';
+    return render(request, 'scmp/endereço.html',
+                    {'mapbox_access_token': mapbox_access_token})
+
+
 def sobrenos(request):
     return render(request, 'scmp/sobrenos.html')
